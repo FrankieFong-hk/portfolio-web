@@ -68,23 +68,27 @@ const skillsData = [
 ];
 
 /**
- * Tech Icons Grid Data
+ * Tech Icons Data
  *
- * This array defines the technologies to be displayed in the icon grid.
+ * These arrays define the technologies to be displayed in the scrolling rows.
  * Each string represents a technology name that will be displayed with its first letter as an icon.
+ * The technologies are split into two rows for the alternating scroll directions.
  *
  * To customize:
  * - Add/remove technology names to change which icons are displayed
- * - The order here determines the display order in the grid
  * - Keep names concise for better mobile display
+ * - Ensure each row has enough items for a smooth infinite scroll effect
  */
-const techIcons = [
+const techIconsRow1 = [
   "React",
   "Next.js",
   "TypeScript",
   "Node.js",
   "Tailwind CSS",
   "MongoDB",
+];
+
+const techIconsRow2 = [
   "PostgreSQL",
   "GraphQL",
   "Docker",
@@ -93,32 +97,30 @@ const techIcons = [
   "Express",
 ];
 
+// Duplicate the arrays multiple times to create a truly seamless infinite scroll effect
+const techIconsRow1Extended = [
+  ...techIconsRow1,
+  ...techIconsRow1,
+  ...techIconsRow1,
+  ...techIconsRow1,
+];
+const techIconsRow2Extended = [
+  ...techIconsRow2,
+  ...techIconsRow2,
+  ...techIconsRow2,
+  ...techIconsRow2,
+];
+
 export function Skills() {
   /**
-   * Animation Variants
+   * Animation Settings
    *
-   * These Framer Motion animation variants define how elements animate in and out of view.
-   * - containerVariants: Controls the parent container with staggered children animations
-   * - itemVariants: Controls individual item animations with opacity and y-position changes
+   * These settings control the infinite scroll animation behavior
+   * - scrollAnimationDuration: Controls the speed of the infinite scroll animation
    */
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Creates a staggered effect for child elements
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  // Animation settings for the infinite scroll
+  const scrollAnimationDuration = 30; // seconds for one complete cycle
 
   return (
     <section id="skills" className="py-20 bg-muted/30">
@@ -139,31 +141,81 @@ export function Skills() {
             My technical expertise and tools I work with
           </p>
         </motion.div>
-        {/* Tech Icons Grid */}
+        {/* Tech Icons Infinite Scroll */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 mb-16"
+          className="mb-16 space-y-8 overflow-hidden"
         >
-          {/* Map through tech icons and create animated grid items */}
-          {techIcons.map((tech) => (
+          {/* First row - scrolling right */}
+          <div className="relative overflow-hidden py-4">
             <motion.div
-              key={tech}
-              variants={itemVariants}
-              className="flex flex-col items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex whitespace-nowrap"
+              animate={{
+                x: ["-100%", "0%"],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: scrollAnimationDuration,
+                  ease: "linear",
+                },
+              }}
             >
-              <div className="w-16 h-16 rounded-xl bg-background shadow-md flex items-center justify-center mb-2">
-                <div className="text-2xl font-bold text-primary">
-                  {tech.charAt(0)}
-                </div>
-              </div>
-              <span className="text-sm font-medium">{tech}</span>
+              {techIconsRow1Extended.map((tech, index) => (
+                <motion.div
+                  key={`${tech}-${index}`}
+                  className="inline-flex flex-col items-center justify-center mx-6"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="w-16 h-16 rounded-xl bg-background shadow-md flex items-center justify-center mb-2">
+                    <div className="text-2xl font-bold text-primary">
+                      {tech.charAt(0)}
+                    </div>
+                  </div>
+                  <span className="text-sm font-medium">{tech}</span>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
+          </div>
+
+          {/* Second row - scrolling left */}
+          <div className="relative overflow-hidden py-4">
+            <motion.div
+              className="flex whitespace-nowrap"
+              animate={{
+                x: ["0%", "-100%"],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: scrollAnimationDuration,
+                  ease: "linear",
+                },
+              }}
+            >
+              {techIconsRow2Extended.map((tech, index) => (
+                <motion.div
+                  key={`${tech}-${index}`}
+                  className="inline-flex flex-col items-center justify-center mx-6"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="w-16 h-16 rounded-xl bg-background shadow-md flex items-center justify-center mb-2">
+                    <div className="text-2xl font-bold text-primary">
+                      {tech.charAt(0)}
+                    </div>
+                  </div>
+                  <span className="text-sm font-medium">{tech}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
         {/* Skills Categories - Responsive 3-column grid on medium screens and above */}
         <div className="grid gap-8 md:grid-cols-3">
