@@ -98,8 +98,10 @@ export function Experience() {
    * - Hover effects on cards for interactive feedback
    */
   return (
-    <section id="experience" className="py-20 bg-muted/30">
-      <div className="container px-4 md:px-6 m-auto">
+    <section id="experience" className="py-20 relative overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-tl from-secondary/5 via-primary/10 to-secondary/10 dark:from-secondary/10 dark:via-primary/5 dark:to-secondary/5 z-0"></div>
+      <div className="container px-4 md:px-6 m-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

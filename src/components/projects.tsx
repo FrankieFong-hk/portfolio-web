@@ -126,9 +126,11 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-bl from-secondary/10 via-primary/5 to-secondary/5 dark:from-secondary/5 dark:via-primary/10 dark:to-secondary/10 z-0"></div>
       {/* Section with subtle background color */}
-      <div className="container px-4 md:px-6 m-auto">
+      <div className="container px-4 md:px-6 m-auto relative z-10">
         {/* Responsive container with padding */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

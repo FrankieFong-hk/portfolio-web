@@ -123,8 +123,10 @@ export function Skills() {
   const scrollAnimationDuration = 30; // seconds for one complete cycle
 
   return (
-    <section id="skills" className="py-20 bg-muted/30">
-      <div className="container px-4 md:px-6 m-auto">
+    <section id="skills" className="py-20 relative overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/10 dark:from-primary/10 dark:via-primary/5 dark:to-secondary/5 z-0"></div>
+      <div className="container px-4 md:px-6 m-auto relative z-10">
         {" "}
         {/* Container with responsive padding */}
         <motion.div
