@@ -9,6 +9,7 @@
  */
 
 import { Hero } from "@/components/hero";
+import { AboutMe } from "@/components/about-me";
 import { Skills } from "@/components/skills";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
@@ -19,6 +20,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Main sections of the portfolio */}
       <Hero />
+      <AboutMe />
       <Skills />
       <Projects />
       <Experience />
