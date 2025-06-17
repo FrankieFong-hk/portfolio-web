@@ -98,7 +98,7 @@ export function Experience() {
    * - Hover effects on cards for interactive feedback
    */
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-20 bg-muted/30">
       <div className="container px-4 md:px-6 m-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

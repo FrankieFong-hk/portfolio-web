@@ -126,7 +126,7 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section id="projects" className="py-20">
       {/* Section with subtle background color */}
       <div className="container px-4 md:px-6 m-auto">
         {/* Responsive container with padding */}

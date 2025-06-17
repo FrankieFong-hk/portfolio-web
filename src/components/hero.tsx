@@ -7,6 +7,7 @@
  *
  * Features:
  * - Animated entrance effects using Framer Motion
+ * - Interactive particle background with mouse interaction
  * - Subtle background gradient elements
  * - Responsive design for all screen sizes
  * - Call-to-action buttons for projects and resume
@@ -21,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
+import { ParticlesBackground } from "@/components/particles-background";
 
 export function Hero() {
   return (
@@ -28,6 +30,9 @@ export function Hero() {
       id="home"
       className="relative py-20 md:py-32 overflow-hidden flex justify-center"
     >
+      {/* Interactive particle background */}
+      <ParticlesBackground />
+      
       {/* Background elements - Decorative blurred circles */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Top-right decorative circle */}

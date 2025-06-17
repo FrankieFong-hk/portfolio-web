@@ -20,8 +20,8 @@ export default function Home() {
       {/* Main sections of the portfolio */}
       <Hero />
       <Skills />
-      <Experience />
       <Projects />
+      <Experience />
       <Contact />
 
       {/* Add additional sections here if needed */}
