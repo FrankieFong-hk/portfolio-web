@@ -16,7 +16,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -37,7 +37,8 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          © {new Date().getFullYear()} Developer Portfolio. All rights reserved.
+          © {new Date().getFullYear()} Frankie Fong Portfolio. All rights
+          reserved.
         </motion.p>
 
         {/* Social media links container with staggered animation */}
@@ -70,18 +71,6 @@ export function Footer() {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
               <Linkedin className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
               <span className="sr-only">LinkedIn</span>
-            </motion.div>
-          </Link>
-          {/* Twitter link with hover animation and accessibility */}
-          <Link
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Twitter profile"
-          >
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-              <Twitter className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
-              <span className="sr-only">Twitter</span>
             </motion.div>
           </Link>
           {/* Email contact link with hover animation and accessibility */}
