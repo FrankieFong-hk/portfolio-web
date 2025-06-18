@@ -177,7 +177,7 @@ export function Navbar() {
                   </ScrollLink>
                 ))}
                 <Link
-                  href="/resume.pdf"
+                  href="/Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"

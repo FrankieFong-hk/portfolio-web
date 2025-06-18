@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Projects Data
@@ -42,59 +43,111 @@ import Link from "next/link";
  * - Update demo and GitHub URLs to point to your actual projects
  */
 const projectsData = [
+  // {
+  //   title: "E-commerce Platform",
+  //   description:
+  //     "A full-featured online store with product catalog, shopping cart, and payment integration.",
+  //   image: "/project-1.png", // Replace with actual image path
+  //   technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
+  //   demoUrl: "https://example.com/demo",
+  //   githubUrl: "https://github.com/username/project",
+  // },
+  // {
+  //   title: "Task Management App",
+  //   description:
+  //     "A productivity application for managing tasks, projects, and team collaboration.",
+  //   image: "/project-2.png", // Replace with actual image path
+  //   technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
+  //   demoUrl: "https://example.com/demo",
+  //   githubUrl: "https://github.com/username/project",
+  // },
   {
-    title: "E-commerce Platform",
+    title: "Expense Tracker App",
     description:
-      "A full-featured online store with product catalog, shopping cart, and payment integration.",
-    image: "/project-1.png", // Replace with actual image path
-    technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
+      "A cross-platform expense tracking application built with React Native and Expo, featuring user authentication through Clerk and data persistence with NeonDB.",
+    image: "/expense-tracker-app.png",
+    technologies: [
+      "React Native",
+      "Expo",
+      "Clerk Authentication",
+      "Express.js",
+      "NeonDB",
+      "Upstash Redis",
+      "TypeScript",
+      "Expo Router",
+    ],
+    githubUrl: "https://github.com/FrankieFong-hk/expense-tracker-app",
   },
   {
-    title: "Task Management App",
+    title: "E-commerce Store",
     description:
-      "A productivity application for managing tasks, projects, and team collaboration.",
-    image: "/project-2.png", // Replace with actual image path
-    technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
+      "A full-stack e-commerce platform with user authentication, product management, shopping cart functionality, payment processing, and analytics dashboard.",
+    image: "/e-commerce-store.png",
+    technologies: [
+      "React",
+      "Express.js",
+      "MongoDB",
+      "Node.js",
+      "Tailwind CSS",
+      "Vite",
+      "Stripe",
+      "Zustand",
+      "DaisyUI",
+      "Framer Motion",
+    ],
+    demoUrl: "https://e-commerce-store-2-zeta.vercel.app/",
+    githubUrl: "https://github.com/FrankieFong-hk/e-commerce-store-2",
   },
   {
-    title: "Real-time Chat Application",
+    title: "Twitter Clone",
     description:
-      "A messaging platform with real-time communication, user authentication, and file sharing.",
-    image: "/project-3.png", // Replace with actual image path
-    technologies: ["React", "Socket.io", "Express", "MongoDB"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
+      "A full-stack social media platform with user authentication, real-time posts, notifications, and media sharing capabilities, modeled after Twitter's core functionality.",
+    image: "/twitter-clone.png",
+    technologies: [
+      "React",
+      "Express.js",
+      "MongoDB",
+      "Node.js",
+      "Tailwind CSS",
+      "DaisyUI",
+      "Vite",
+      "React Query",
+      "JWT Authentication",
+      "Cloudinary",
+      "React Router",
+      "React Icons",
+    ],
+    demoUrl: "https://twitter-clone-opal-six.vercel.app/",
+    githubUrl: "https://github.com/FrankieFong-hk/twitter-clone",
   },
   {
-    title: "Fitness Tracking Dashboard",
+    title: "Product Store",
     description:
-      "A dashboard for tracking workouts, nutrition, and fitness progress with data visualization.",
-    image: "/project-4.png", // Replace with actual image path
-    technologies: ["Next.js", "Chart.js", "Tailwind CSS", "Supabase"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
+      "A full-stack web application for managing product listings with CRUD operations, responsive UI, and MongoDB database integration.",
+    image: "/product-store.png",
+    technologies: [
+      "React",
+      "Express.js",
+      "MongoDB",
+      "Node.js",
+      "Tailwind CSS",
+      "Vite",
+      "Zustand",
+      "React Router",
+      "Mongoose",
+      "React Icons",
+    ],
+    demoUrl: "https://product-store-livid.vercel.app/",
+    githubUrl: "https://github.com/FrankieFong-hk/mern-crash-course",
   },
   {
-    title: "Weather Forecast App",
+    title: "Monsters Rolodex",
     description:
-      "A weather application providing current conditions and forecasts with location detection.",
-    image: "/project-5.png", // Replace with actual image path
-    technologies: ["React", "OpenWeather API", "Geolocation API"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
-  },
-  {
-    title: "Personal Finance Tracker",
-    description:
-      "An application for tracking expenses, income, and financial goals with visualization.",
-    image: "/project-6.png", // Replace with actual image path
-    technologies: ["React", "D3.js", "Firebase", "Tailwind CSS"],
-    demoUrl: "https://example.com/demo",
-    githubUrl: "https://github.com/username/project",
+      "The Monster Rolodex is based on React and contains functions for searching data and setting titles.",
+    image: "/monster-rolodex.png", // Replace with actual image path
+    technologies: ["HTML", "CSS", "JavaScript", "React"],
+    demoUrl: "https://frankiefong-hk.github.io/monsters_rolodex/",
+    githubUrl: "https://github.com/FrankieFong-hk/monsters_rolodex",
   },
 ];
 
@@ -168,9 +221,13 @@ export function Projects() {
                 <div className="aspect-video relative overflow-hidden bg-muted">
                   {/* Placeholder for project image - displays first letter of project title */}
                   {/* Replace this with actual project screenshots by updating the image paths in projectsData */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center text-4xl font-bold text-primary-foreground">
-                    {project.title.charAt(0)}
-                  </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={500}
+                    height={500}
+                    className="object-contain"
+                  />
                 </div>
                 <CardHeader className="pb-2">
                   <CardTitle>{project.title}</CardTitle>
@@ -206,17 +263,19 @@ export function Projects() {
                     </Link>
                   </Button>
                   {/* Live demo link */}
-                  <Button asChild variant="ghost" size="sm">
-                    <Link
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} live demo`}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo
-                    </Link>
-                  </Button>
+                  {project.demoUrl && (
+                    <Button asChild variant="ghost" size="sm">
+                      <Link
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} live demo`}
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Demo
+                      </Link>
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
