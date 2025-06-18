@@ -3,20 +3,20 @@
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 import { useTheme } from "next-themes";
 
 export function ParticlesBackground() {
   const { theme } = useTheme();
-  
+
   // Initialize the particles engine
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
   // Optional: Handle container ready
-  const particlesLoaded = useCallback(async (_container: Container | undefined) => {
-    // You can access the container here if needed
+  const particlesLoaded = useCallback(async () => {
+    // Container parameter removed as it's not being used
   }, []);
 
   return (
