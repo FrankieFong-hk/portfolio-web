@@ -17,7 +17,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { User } from "lucide-react";
 import Image from "next/image";
 import avatarImage from "../assets/images/avatar.jpg";
 
@@ -71,23 +70,19 @@ export function AboutMe() {
             {/* Bio section */}
             <Card>
               <CardContent className="pt-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <User className="h-5 w-5 text-primary" />
-                  <h3 className="text-xl font-semibold">Biography</h3>
-                </div>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Hi there! I&apos;m Frankie Fong, a passionate Full-Stack
-                    Developer based in Toronto with over 5 years of experience
-                    in web development. I specialize in building modern,
-                    responsive, and user-friendly applications using React,
-                    Next.js, and Node.js.
+                    Hi there! I&apos;m Frankie Fong, a passionate Software
+                    Developer with over 3 years of experience in web
+                    development. I specialize in building modern, responsive,
+                    and user-friendly applications using React, Next.js,
+                    Node.js, TypeScript, PostgreSQL, MongoDB, and Tailwind CSS.
                   </p>
                   <p>
-                    My journey in tech began when I built my first website in
-                    college, and I&apos;ve been hooked ever since. I&apos;m
-                    constantly learning and exploring new technologies to stay
-                    at the cutting edge of web development.
+                    With over three years of dedicated expertise, I have worked
+                    in various fields, including web design and development,
+                    software development, and database design and optimization.
+                    I am always excited to explore new tools and technologies.
                   </p>
                   <p>
                     When I&apos;m not coding, you can find me hiking through

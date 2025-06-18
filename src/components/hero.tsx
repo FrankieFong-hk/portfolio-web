@@ -23,6 +23,7 @@ import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { ParticlesBackground } from "@/components/particles-background";
+import { Link as ScrollLink } from "react-scroll";
 
 export function Hero() {
   return (
@@ -98,8 +99,8 @@ export function Hero() {
             </h1>
             {/* Brief description - customize with your location and skills */}
             <p className="text-xl md:text-2xl text-muted-foreground max-w-[850px]">
-              Based in Toronto, crafting beautiful and functional web
-              experiences with modern technologies
+              Crafting beautiful and functional web experiences with modern
+              technologies
             </p>
           </motion.div>
 
@@ -112,9 +113,15 @@ export function Hero() {
           >
             {/* Primary CTA button - links to projects section */}
             <Button asChild size="lg" className="rounded-full px-8">
-              <Link href="#projects">
+              <ScrollLink
+                to="projects"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </ScrollLink>
             </Button>
             {/* Secondary CTA button - links to resume download */}
             <Button

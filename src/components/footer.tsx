@@ -50,7 +50,7 @@ export function Footer() {
         >
           {/* GitHub link with hover animation and accessibility */}
           <Link
-            href="https://github.com"
+            href="https://github.com/FrankieFong-hk"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit GitHub profile"
@@ -63,7 +63,7 @@ export function Footer() {
           </Link>
           {/* LinkedIn link with hover animation and accessibility */}
           <Link
-            href="https://linkedin.com"
+            href="http://www.linkedin.com/in/frankie-fong98"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit LinkedIn profile"
@@ -74,7 +74,7 @@ export function Footer() {
             </motion.div>
           </Link>
           {/* Email contact link with hover animation and accessibility */}
-          <Link href="mailto:contact@example.com" aria-label="Send email">
+          <Link href="mailto:httfong@gmail.com" aria-label="Send email">
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
               <Mail className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
               <span className="sr-only">Email</span>

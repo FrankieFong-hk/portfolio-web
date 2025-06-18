@@ -27,10 +27,16 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 /**
  * Navigation items configuration
@@ -122,6 +128,13 @@ export function Navbar() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+        </div>
+        <div className="hidden md:flex items-center space-x-4">
+          <Button variant="default">
+            <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              Resume
+            </Link>
+          </Button>
           {/* Theme toggle button */}
           <ThemeToggle />
         </div>
@@ -139,6 +152,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[240px] sm:w-[300px]">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <nav className="flex flex-col gap-4 mt-8">
                 {navItems.map((item) => (
                   <ScrollLink
@@ -162,6 +176,14 @@ export function Navbar() {
                     {item.name}
                   </ScrollLink>
                 ))}
+                <Link
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"
+                >
+                  Resume
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>

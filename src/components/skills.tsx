@@ -19,8 +19,35 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import HTML5 from "@/assets/icons/HTML5.svg";
+import CSS3 from "@/assets/icons/CSS3.svg";
+import JavaScript from "@/assets/icons/JavaScript.svg";
+import ReactIcon from "@/assets/icons/React.svg";
+import Nextjs from "@/assets/icons/Next.js.svg";
+import TypeScript from "@/assets/icons/TypeScript.svg";
+import Redux from "@/assets/icons/Redux.svg";
+import TailwindCSS from "@/assets/icons/TailwindCSS.svg";
+import Shadcn from "@/assets/icons/Shadcn.svg";
+import Bootstrap from "@/assets/icons/Bootstrap.svg";
+import FramerMotion from "@/assets/icons/FramerMotion.svg";
+import Git from "@/assets/icons/Git.svg";
+import MaterialUI from "@/assets/icons/MaterialUI.svg";
+import MongoDB from "@/assets/icons/MongoDB.svg";
+import MySQL from "@/assets/icons/MySQL.svg";
+import Nodejs from "@/assets/icons/Nodejs.svg";
+import PostgresSQL from "@/assets/icons/PostgresSQL.svg";
+import PHP from "@/assets/icons/PHP.svg";
+import Stripe from "@/assets/icons/Stripe.svg";
+import Vitejs from "@/assets/icons/Vite.js.svg";
+import WordPress from "@/assets/icons/WordPress.svg";
+import Figma from "@/assets/icons/Figma.svg";
+import Webpack from "@/assets/icons/Webpack.svg";
+import Express from "@/assets/icons/Express.svg";
+import ReactNative from "@/assets/icons/ReactNative.svg";
+import Jest from "@/assets/icons/Jest.svg";
 
-/**
+/**T
  * Skills Data
  *
  * This data structure defines the skills to be displayed in the Skills component.
@@ -35,34 +62,42 @@ const skillsData = [
   {
     category: "Frontend",
     skills: [
-      { name: "React", level: "Advanced" },
-      { name: "Next.js", level: "Advanced" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "Tailwind CSS", level: "Advanced" },
-      { name: "Framer Motion", level: "Intermediate" },
-      { name: "Redux", level: "Advanced" },
+      { name: "HTML", icon: HTML5 },
+      { name: "CSS", icon: CSS3 },
+      { name: "JavaScript", icon: JavaScript },
+      { name: "React", icon: ReactIcon },
+      { name: "React Native", icon: ReactNative },
+      { name: "Next.js", icon: Nextjs },
+      { name: "TypeScript", icon: TypeScript },
+      { name: "Redux", icon: Redux },
+      { name: "Tailwind CSS", icon: TailwindCSS },
+      { name: "Shadcn", icon: Shadcn },
+      { name: "Bootstrap", icon: Bootstrap },
+      { name: "Material UI", icon: MaterialUI },
+      { name: "Framer Motion", icon: FramerMotion },
     ],
   },
   {
     category: "Backend",
     skills: [
-      { name: "Node.js", level: "Advanced" },
-      { name: "Express", level: "Advanced" },
-      { name: "MongoDB", level: "Intermediate" },
-      { name: "PostgreSQL", level: "Intermediate" },
-      { name: "GraphQL", level: "Intermediate" },
-      { name: "REST API", level: "Advanced" },
+      { name: "Node.js", icon: Nodejs },
+      { name: "Express", icon: Express },
+      { name: "MongoDB", icon: MongoDB },
+      { name: "PostgresSQL", icon: PostgresSQL },
+      { name: "PHP", icon: PHP },
+      { name: "MySQL", icon: MySQL },
+      { name: "Stripe", icon: Stripe },
     ],
   },
   {
     category: "DevOps & Tools",
     skills: [
-      { name: "Git", level: "Advanced" },
-      { name: "Docker", level: "Intermediate" },
-      { name: "AWS", level: "Intermediate" },
-      { name: "CI/CD", level: "Intermediate" },
-      { name: "Jest", level: "Intermediate" },
-      { name: "Webpack", level: "Intermediate" },
+      { name: "Vite", icon: Vitejs },
+      { name: "Git", icon: Git },
+      { name: "Wordpress", icon: WordPress },
+      { name: "Jest", icon: Jest },
+      { name: "Webpack", icon: Webpack },
+      { name: "Figma", icon: Figma },
     ],
   },
 ];
@@ -80,36 +115,39 @@ const skillsData = [
  * - Ensure each row has enough items for a smooth infinite scroll effect
  */
 const techIconsRow1 = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Tailwind CSS",
-  "MongoDB",
+  { name: "HTML", icon: HTML5 },
+  { name: "CSS", icon: CSS3 },
+  { name: "JavaScript", icon: JavaScript },
+  { name: "React", icon: ReactIcon },
+  { name: "React Native", icon: ReactNative },
+  { name: "Next.js", icon: Nextjs },
+  { name: "TypeScript", icon: TypeScript },
+  { name: "Redux", icon: Redux },
+  { name: "Tailwind CSS", icon: TailwindCSS },
+  { name: "Shadcn", icon: Shadcn },
+  { name: "Material UI", icon: MaterialUI },
+  { name: "Bootstrap", icon: Bootstrap },
+  { name: "Framer Motion", icon: FramerMotion },
 ];
 
 const techIconsRow2 = [
-  "PostgreSQL",
-  "GraphQL",
-  "Docker",
-  "AWS",
-  "Git",
-  "Express",
+  { name: "Node.js", icon: Nodejs },
+  { name: "Express", icon: Express },
+  { name: "MongoDB", icon: MongoDB },
+  { name: "PostgreSQL", icon: PostgresSQL },
+  { name: "Stripe", icon: Stripe },
+  { name: "PHP", icon: PHP },
+  { name: "MySQL", icon: MySQL },
+  { name: "Wordpress", icon: WordPress },
+  { name: "Jest", icon: Jest },
+  { name: "Webpack", icon: Webpack },
+  { name: "Figma", icon: Figma },
+  { name: "Git", icon: Git },
 ];
 
 // Duplicate the arrays multiple times to create a truly seamless infinite scroll effect
-const techIconsRow1Extended = [
-  ...techIconsRow1,
-  ...techIconsRow1,
-  ...techIconsRow1,
-  ...techIconsRow1,
-];
-const techIconsRow2Extended = [
-  ...techIconsRow2,
-  ...techIconsRow2,
-  ...techIconsRow2,
-  ...techIconsRow2,
-];
+const techIconsRow1Extended = [...techIconsRow1, ...techIconsRow1];
+const techIconsRow2Extended = [...techIconsRow2, ...techIconsRow2];
 
 export function Skills() {
   /**
@@ -174,12 +212,17 @@ export function Skills() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="w-16 h-16 rounded-xl bg-background shadow-md flex items-center justify-center mb-2">
+                  <div className="w-16 h-16 rounded-xl shadow-md flex items-center justify-center mb-2">
                     <div className="text-2xl font-bold text-primary">
-                      {tech.charAt(0)}
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={50}
+                        height={50}
+                      />
                     </div>
                   </div>
-                  <span className="text-sm font-medium">{tech}</span>
+                  <span className="text-sm font-medium">{tech.name}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -208,12 +251,15 @@ export function Skills() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="w-16 h-16 rounded-xl bg-background shadow-md flex items-center justify-center mb-2">
-                    <div className="text-2xl font-bold text-primary">
-                      {tech.charAt(0)}
-                    </div>
+                  <div className="w-16 h-16 rounded-xl shadow-md flex items-center justify-center mb-2">
+                    <Image
+                      src={tech.icon}
+                      alt={tech.name}
+                      width={50}
+                      height={50}
+                    />
                   </div>
-                  <span className="text-sm font-medium">{tech}</span>
+                  <span className="text-sm font-medium">{tech.name}</span>
                 </motion.div>
               ))}
             </motion.div>

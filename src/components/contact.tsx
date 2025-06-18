@@ -175,7 +175,12 @@ export function Contact() {
                   <div>
                     <h3 className="font-medium text-base sm:text-lg">Email</h3>
                     <p className="text-muted-foreground text-sm sm:text-base break-all">
-                      contact@example.com
+                      <a
+                        href="mailto:httfong@gmail.com"
+                        className="hover:text-primary transition-colors duration-200"
+                      >
+                        httfong@gmail.com
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -185,7 +190,12 @@ export function Contact() {
                   <div>
                     <h3 className="font-medium text-base sm:text-lg">Phone</h3>
                     <p className="text-muted-foreground text-sm sm:text-base">
-                      +1 (123) 456-7890
+                      <a
+                        href="tel:+14374361203"
+                        className="hover:text-primary transition-colors duration-200"
+                      >
+                        +1 (437) 436-1203
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -219,7 +229,7 @@ export function Contact() {
                 <div className="flex flex-wrap gap-3 sm:gap-4">
                   {/* GitHub social link with hover animation */}
                   <motion.a
-                    href="https://github.com"
+                    href="https://github.com/FrankieFong-hk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -241,7 +251,7 @@ export function Contact() {
 
                   {/* LinkedIn social link with hover animation */}
                   <motion.a
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/frankie-fong98"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
