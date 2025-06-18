@@ -1,13 +1,23 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import type { Engine } from "tsparticles-engine";
 import { useTheme } from "next-themes";
 
 export function ParticlesBackground() {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<string | undefined>(
+    undefined
+  );
+
+  // Determine the actual theme considering system preference
+  useEffect(() => {
+    // Use theme if defined, otherwise fall back to system theme or default to 'light'
+    const resolvedTheme = theme === "system" ? systemTheme : theme;
+    setCurrentTheme(resolvedTheme || "light");
+  }, [theme, systemTheme]);
 
   // Initialize the particles engine
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -52,10 +62,10 @@ export function ParticlesBackground() {
         },
         particles: {
           color: {
-            value: theme === "dark" ? "#ffffff" : "#000000",
+            value: currentTheme === "dark" ? "#ffffff" : "#000000",
           },
           links: {
-            color: theme === "dark" ? "#ffffff" : "#000000",
+            color: currentTheme === "dark" ? "#ffffff" : "#000000",
             distance: 150,
             enable: true,
             opacity: 0.2,
