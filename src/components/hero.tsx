@@ -28,11 +28,11 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative py-20 md:py-32 overflow-hidden flex justify-center"
+      className="relative py-20 md:py-32 overflow-hidden flex justify-center items-center h-[calc(100vh-4rem)]"
     >
       {/* Interactive particle background */}
       <ParticlesBackground />
-      
+
       {/* Background elements - Decorative blurred circles */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Top-right decorative circle */}
@@ -97,7 +97,7 @@ export function Hero() {
               />
             </h1>
             {/* Brief description - customize with your location and skills */}
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-[750px]">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-[850px]">
               Based in Toronto, crafting beautiful and functional web
               experiences with modern technologies
             </p>
@@ -134,7 +134,7 @@ export function Hero() {
           </motion.div>
 
           {/* Profile image/avatar with spring animation */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -145,12 +145,15 @@ export function Hero() {
             }}
             className="relative w-full max-w-[320px] aspect-square rounded-full overflow-hidden border-4 border-background shadow-xl"
           >
-            {/* Placeholder avatar - replace with your image */}
-            {/* To use your own image: replace this div with an Image component from next/image */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center text-4xl font-bold text-primary-foreground">
-              A
+              <Image
+                src={avatarImage}
+                alt="Avatar"
+                fill
+                className="object-cover"
+              />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

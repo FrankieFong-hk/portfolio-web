@@ -18,6 +18,8 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { User } from "lucide-react";
+import Image from "next/image";
+import avatarImage from "../assets/images/avatar.jpg";
 
 export function AboutMe() {
   return (
@@ -49,19 +51,12 @@ export function AboutMe() {
             viewport={{ once: true }}
           >
             <div className="relative w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden border-4 border-background shadow-xl">
-              {/* Replace with your own image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center text-4xl font-bold text-primary-foreground">
-                <User className="h-16 w-16" />
-              </div>
-              {/* Uncomment and use your own image:
               <Image
-                src="/your-profile-image.jpg"
-                alt="Your Name"
+                src={avatarImage}
+                alt="Avatar"
                 fill
                 className="object-cover"
-                priority
               />
-              */}
             </div>
           </motion.div>
 
