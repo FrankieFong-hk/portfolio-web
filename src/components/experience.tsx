@@ -40,48 +40,45 @@ import { Briefcase, Building } from "lucide-react";
  */
 const experienceData = [
   {
-    title: "Senior Full-Stack Developer",
-    company: "Tech Innovations Inc.",
-    duration: "2022 - Present",
+    title: "Software Developer",
+    company: "AritaOne Software Limited",
+    duration: "Jul 2023 - Sep 2024",
     location: "Toronto, Canada",
     description:
-      "Lead developer for enterprise SaaS applications using Next.js, TypeScript, and Node.js.",
+      "Software Developer for web applications using React, Next.js, TypeScript, and Node.js.",
     responsibilities: [
-      "Architected and implemented scalable frontend solutions using React and Next.js",
-      "Developed RESTful APIs and GraphQL endpoints with Node.js and Express",
-      "Led a team of 5 developers and mentored junior team members",
-      "Implemented CI/CD pipelines and containerization with Docker",
-      "Reduced application load time by 40% through performance optimizations",
+      "Developed and maintained responsive front-end interfaces for a travel agency website and an NGO mobile app using React.js, Next.js, and TypeScript.",
+      "Collaborated with designers via Figma to implement responsive Material UI components, ensuring technical feasibility of designs.",
+      "Translated UI/UX designs from Figma into pixel-perfect, functional components, ensuring high-fidelity implementation and seamless user experience.",
+      "Increased application reliability by conducting thorough testing and debugging using Jest and React Testing Library, reducing post-deployment bugs by 25%.",
+      "Optimized application performance with Webpack and Vite, enhancing page load times by 20% across devices and browsers.",
     ],
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Solutions Co.",
-    duration: "2019 - 2022",
-    location: "Vancouver, Canada",
+    title: "Frontend Web Developer",
+    company: "TBS Interactive Limited",
+    duration: "Jul 2022 - Jul 2023",
+    location: "Toronto, Canada",
     description:
-      "Developed responsive web applications for clients in finance and healthcare sectors.",
+      "Developed responsive web applications for clients in luxury brands sectors.",
     responsibilities: [
-      "Built interactive UIs with React, Redux, and TypeScript",
-      "Implemented responsive designs using Tailwind CSS and SCSS",
-      "Collaborated with UX designers to create intuitive user experiences",
-      "Integrated third-party APIs and services",
-      "Participated in agile development processes and sprint planning",
+      "Developed 15+ responsive web applications for luxury brands using JavaScript, Bootstrap, and MySQL, improving client satisfaction scores by 20%.",
+      "Created animated and responsive websites optimized for all devices, improving mobile accessibility and user satisfaction scores by 20%.",
+      "Coordinated with web designers to precisely match visual design plans, ensuring a consistent and high-quality brand representation across all projects.",
+      "Optimized SQL queries for backend APIs, reducing load times by 25% for high-traffic websites.",
     ],
   },
   {
     title: "Web Developer",
-    company: "Creative Agency",
-    duration: "2017 - 2019",
+    company: "City University of Hong Kong Press",
+    duration: "May 2021 - May 2022",
     location: "Montreal, Canada",
     description:
-      "Created websites and web applications for various clients across industries.",
+      "Created websites and web applications for the City University's official website.",
     responsibilities: [
-      "Developed custom WordPress themes and plugins",
-      "Built interactive features using JavaScript and jQuery",
-      "Implemented responsive designs from Figma and Adobe XD mockups",
-      "Optimized website performance and SEO",
-      "Maintained and updated existing client websites",
+      "Developed and designed City University's official website with animations, improving visual appeal and user experience",
+      "Performed data management and debugging for university website maintenance",
+      "Applied CSS with Bootstrap to create responsive webpages ensuring mobile compatibility",
     ],
   },
 ];
@@ -153,7 +150,7 @@ export function Experience() {
                       </div>
                       <CardDescription className="flex items-center gap-1 text-sm">
                         <Building className="h-3.5 w-3.5" />
-                        {job.company} • {job.location}
+                        {job.company}
                       </CardDescription>
                     </CardHeader>
                     {/* Card content with job description and responsibilities */}
