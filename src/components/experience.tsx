@@ -169,7 +169,7 @@ export function Experience() {
                             viewport={{ once: true }}
                             className="flex items-start"
                           >
-                            <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+                            <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                             <span>{item}</span>
                           </motion.li>
                         ))}

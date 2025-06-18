@@ -131,7 +131,7 @@ export function Hero() {
               className="rounded-full px-8"
             >
               <Link
-                href="/Resume.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -58,6 +58,8 @@ const navItems = [
 export function Navbar() {
   // Track scroll position to change navbar appearance
   const [isScrolled, setIsScrolled] = React.useState(false);
+  // State to control the mobile menu open/close state
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   // Add scroll event listener to detect when user scrolls down
   React.useEffect(() => {
@@ -69,6 +71,9 @@ export function Navbar() {
     // Clean up event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  // Function to close the mobile menu
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <motion.header
@@ -144,7 +149,7 @@ export function Navbar() {
           {/* Theme toggle button */}
           <ThemeToggle />
           {/* Mobile slide-out menu using Shadcn Sheet component */}
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="ml-2">
                 <Menu className="h-5 w-5" />
@@ -163,15 +168,7 @@ export function Navbar() {
                     offset={-70}
                     duration={500}
                     className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"
-                    onClick={() => {
-                      // Close the mobile menu sheet when a link is clicked
-                      const sheet = document.querySelector(
-                        '[data-state="open"]'
-                      );
-                      if (sheet) {
-                        sheet.setAttribute("data-state", "closed");
-                      }
-                    }}
+                    onClick={closeMenu}
                   >
                     {item.name}
                   </ScrollLink>
@@ -181,6 +178,7 @@ export function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"
+                  onClick={closeMenu}
                 >
                   Resume
                 </Link>
