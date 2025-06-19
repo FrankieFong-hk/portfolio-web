@@ -16,9 +16,9 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import avatarImage from "../assets/images/avatar.jpg";
+import { CardContent } from "@/components/ui/card";
+import SpotlightCard from "./animation/SpotlightCard";
+import TiltedCard from "./animation/TiltedCard";
 
 export function AboutMe() {
   return (
@@ -49,14 +49,20 @@ export function AboutMe() {
             transition={{ duration: 0.5, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden border-4 border-background shadow-xl">
-              <Image
-                src={avatarImage}
-                alt="Avatar"
-                fill
-                className="object-cover"
-              />
-            </div>
+            <TiltedCard
+              imageSrc="/avatar.jpg"
+              altText="Avatar"
+              captionText=""
+              containerHeight="320px"
+              containerWidth="320px"
+              imageHeight="320px"
+              imageWidth="320px"
+              rotateAmplitude={12}
+              scaleOnHover={1.2}
+              showMobileWarning={false}
+              showTooltip={false}
+              displayOverlayContent={false}
+            />
           </motion.div>
 
           {/* About me content - right side on desktop, bottom on mobile */}
@@ -68,7 +74,7 @@ export function AboutMe() {
             viewport={{ once: true }}
           >
             {/* Bio section */}
-            <Card>
+            <SpotlightCard spotlightColor="rgba(103, 108, 217, 0.25)">
               <CardContent className="pt-6">
                 <div className="space-y-4 text-muted-foreground">
                   <p>
@@ -91,7 +97,7 @@ export function AboutMe() {
                   </p>
                 </div>
               </CardContent>
-            </Card>
+            </SpotlightCard>
           </motion.div>
         </div>
       </div>
