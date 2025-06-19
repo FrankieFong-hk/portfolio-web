@@ -71,7 +71,7 @@ export function Navbar() {
     // Clean up event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   // Function to close the mobile menu
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -136,7 +136,11 @@ export function Navbar() {
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="default">
-            <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="/assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Resume
             </Link>
           </Button>
@@ -174,7 +178,7 @@ export function Navbar() {
                   </ScrollLink>
                 ))}
                 <Link
-                  href="/Resume.pdf"
+                  href="/assets/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"
