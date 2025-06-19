@@ -43,24 +43,6 @@ import Image from "next/image";
  * - Update demo and GitHub URLs to point to your actual projects
  */
 const projectsData = [
-  // {
-  //   title: "E-commerce Platform",
-  //   description:
-  //     "A full-featured online store with product catalog, shopping cart, and payment integration.",
-  //   image: "/project-1.png", // Replace with actual image path
-  //   technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-  //   demoUrl: "https://example.com/demo",
-  //   githubUrl: "https://github.com/username/project",
-  // },
-  // {
-  //   title: "Task Management App",
-  //   description:
-  //     "A productivity application for managing tasks, projects, and team collaboration.",
-  //   image: "/project-2.png", // Replace with actual image path
-  //   technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
-  //   demoUrl: "https://example.com/demo",
-  //   githubUrl: "https://github.com/username/project",
-  // },
   {
     title: "Expense Tracker App",
     description:
@@ -165,6 +147,7 @@ export function Projects() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1, // Creates a staggered effect for child elements
+        delay: 0.8
       },
     },
   };
@@ -174,7 +157,7 @@ export function Projects() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.5, delay: 0.8 },
     },
   };
 
@@ -188,7 +171,7 @@ export function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
           className="space-y-2 text-center mb-12"
         >
@@ -213,7 +196,7 @@ export function Projects() {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.2}}
             >
               {/* Project card with hover effect and full height */}
               <Card className="overflow-hidden h-full border shadow-lg hover:shadow-xl transition-all flex flex-col">

@@ -170,7 +170,7 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
           className="space-y-2 text-center mb-12"
         >
@@ -185,7 +185,7 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true }}
           className="mb-16 space-y-8 overflow-hidden"
         >
@@ -273,7 +273,7 @@ export function Skills() {
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index > 0 ? index * 0.5 : 0.3 }}
               viewport={{ once: true }}
             >
               <Card className="h-full overflow-hidden">

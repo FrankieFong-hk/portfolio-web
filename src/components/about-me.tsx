@@ -28,7 +28,7 @@ export function AboutMe() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
           className="space-y-2 text-center mb-12"
         >
@@ -46,7 +46,7 @@ export function AboutMe() {
             className="lg:col-span-2 flex justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
             viewport={{ once: true }}
           >
             <div className="relative w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden border-4 border-background shadow-xl">
@@ -64,7 +64,7 @@ export function AboutMe() {
             className="lg:col-span-3 space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
             viewport={{ once: true }}
           >
             {/* Bio section */}
