@@ -24,6 +24,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { ParticlesBackground } from "@/components/particles-background";
 import { Link as ScrollLink } from "react-scroll";
+import BlurText from "./animation/BlurText";
 
 export function Hero() {
   return (
@@ -98,10 +99,13 @@ export function Hero() {
               />
             </h1>
             {/* Brief description - customize with your location and skills */}
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-[850px]">
-              Crafting beautiful and functional web experiences with modern
-              technologies
-            </p>
+            <BlurText
+              text="Crafting beautiful and functional web experiences with modern technologies"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className="text-xl md:text-2xl text-muted-foreground max-w-[850px] justify-center"
+            />
           </motion.div>
 
           {/* Call-to-action buttons with animation */}

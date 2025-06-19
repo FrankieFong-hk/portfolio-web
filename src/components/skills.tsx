@@ -19,6 +19,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GlareHover from "./animation/GlareHover";
 import Image from "next/image";
 import HTML5 from "@/assets/icons/HTML5.svg";
 import CSS3 from "@/assets/icons/CSS3.svg";
@@ -273,27 +274,42 @@ export function Skills() {
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index > 0 ? index * 0.5 : 0.3 }}
+              transition={{
+                duration: 0.5,
+                delay: index > 0 ? index * 0.5 : 0.3,
+              }}
               viewport={{ once: true }}
             >
-              <Card className="h-full overflow-hidden">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4">
-                    {category.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <Badge
-                        key={skill.name}
-                        variant="secondary"
-                        className="px-3 py-1 text-sm rounded-full"
-                      >
-                        {skill.name}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <GlareHover
+                width="100%"
+                height="100%"
+                glareColor="#ffffff"
+                glareOpacity={0.3}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={1200}
+                playOnce={false}
+                className="border-0 rounded-2xl"
+              >
+                <Card className="h-full overflow-hidden w-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-4">
+                      {category.category}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <Badge
+                          key={skill.name}
+                          variant="secondary"
+                          className="px-3 py-1 text-sm rounded-full"
+                        >
+                          {skill.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </GlareHover>
             </motion.div>
           ))}
         </div>
