@@ -15,6 +15,7 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Card,
@@ -26,9 +27,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ZoomIn } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { ImageModal } from "@/components/ui/image-modal";
 
 /**
  * Projects Data
@@ -134,6 +136,18 @@ const projectsData = [
 ];
 
 export function Projects() {
+  // State for image modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImageAlt, setSelectedImageAlt] = useState("");
+
+  // Function to open the modal with the selected image
+  const openImageModal = (imageSrc: string, imageAlt: string) => {
+    setSelectedImage(imageSrc);
+    setSelectedImageAlt(imageAlt);
+    setModalOpen(true);
+  };
+
   /**
    * Animation Variants
    *
@@ -201,16 +215,23 @@ export function Projects() {
               {/* Project card with hover effect and full height */}
               <Card className="overflow-hidden h-full border shadow-lg hover:shadow-xl transition-all flex flex-col">
                 {/* Project image container with 16:9 aspect ratio */}
-                <div className="aspect-video relative overflow-hidden bg-muted">
-                  {/* Placeholder for project image - displays first letter of project title */}
-                  {/* Replace this with actual project screenshots by updating the image paths in projectsData */}
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={500}
-                    height={500}
-                    className="object-contain"
-                  />
+                <div className="aspect-video relative overflow-hidden bg-muted cursor-pointer group">
+                  {/* Project image with click to zoom functionality */}
+                  <div 
+                    onClick={() => openImageModal(project.image, project.title)}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={500}
+                      height={500}
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors">
+                      <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={32} />
+                    </div>
+                  </div>
                 </div>
                 <CardHeader className="pb-2">
                   <CardTitle>{project.title}</CardTitle>
@@ -265,6 +286,14 @@ export function Projects() {
           ))}
         </motion.div>
       </div>
+
+      {/* Image Modal Component */}
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        imageSrc={selectedImage}
+        imageAlt={selectedImageAlt}
+      />
     </section>
   );
 }
