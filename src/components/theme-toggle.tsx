@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme, systemTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   // Only show the theme toggle after mounting to avoid hydration mismatch
@@ -14,6 +14,22 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
+  // Determine the actual current theme (accounting for system preference)
+  const resolvedTheme = React.useMemo(() => {
+    if (!mounted) return "light"; // Default before mounting
+    return theme === "system" ? systemTheme : theme;
+  }, [mounted, theme, systemTheme]);
+
+  // Handle theme toggle with proper fallbacks
+  const toggleTheme = React.useCallback(() => {
+    if (resolvedTheme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  }, [resolvedTheme, setTheme]);
+
+  // Show placeholder during SSR to avoid hydration mismatch
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon">
@@ -27,12 +43,12 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={toggleTheme}
     >
-      {theme === "light" ? (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
-      ) : (
+      {resolvedTheme === "dark" ? (
         <Moon className="h-[1.2rem] w-[1.2rem]" />
+      ) : (
+        <Sun className="h-[1.2rem] w-[1.2rem]" />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
