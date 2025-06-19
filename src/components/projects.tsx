@@ -96,7 +96,7 @@ const projectsData = [
       "Framer Motion",
     ],
     demoUrl: "https://e-commerce-store-2-zeta.vercel.app/",
-    githubUrl: "https://github.com/FrankieFong-hk/e-commerce-store-2",
+    githubUrl: "https://github.com/FrankieFong-hk/e-commerce-store",
   },
   {
     title: "Twitter Clone",
@@ -216,7 +216,7 @@ export function Projects() {
               transition={{ duration: 0.2 }}
             >
               {/* Project card with hover effect and full height */}
-              <Card className="overflow-hidden h-full border shadow-lg hover:shadow-xl transition-all">
+              <Card className="overflow-hidden h-full border shadow-lg hover:shadow-xl transition-all flex flex-col">
                 {/* Project image container with 16:9 aspect ratio */}
                 <div className="aspect-video relative overflow-hidden bg-muted">
                   {/* Placeholder for project image - displays first letter of project title */}
@@ -233,7 +233,7 @@ export function Projects() {
                   <CardTitle>{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   {/* Technologies badge list - flexbox with wrapping */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {/* Map through technologies and create badges */}
@@ -249,7 +249,7 @@ export function Projects() {
                   </div>
                 </CardContent>
                 {/* Card footer with GitHub and demo links */}
-                <CardFooter className="flex justify-between">
+                <CardFooter className="flex justify-between mt-auto">
                   {/* GitHub repository link */}
                   <Button asChild variant="ghost" size="sm">
                     <Link
