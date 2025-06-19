@@ -135,11 +135,16 @@ export function Navbar() {
           </NavigationMenu>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="default">
+          <Button 
+            variant="default" 
+            className="group relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-foreground w-full transform scale-x-0 origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-100 z-0"></span>
             <Link
               href="/assets/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              className="relative z-10"
             >
               Resume
             </Link>
@@ -181,10 +186,11 @@ export function Navbar() {
                   href="/assets/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer"
+                  className="px-2 py-1 text-lg font-medium transition-colors hover:text-primary cursor-pointer relative group overflow-hidden"
                   onClick={closeMenu}
                 >
-                  Resume
+                  <span className="absolute inset-0 bg-foreground w-full transform scale-x-0 origin-left transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                  <span className="relative z-10">Resume</span>
                 </Link>
               </nav>
             </SheetContent>

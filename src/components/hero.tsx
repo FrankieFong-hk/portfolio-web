@@ -25,6 +25,7 @@ import { TypeAnimation } from "react-type-animation";
 import { ParticlesBackground } from "@/components/particles-background";
 import { Link as ScrollLink } from "react-scroll";
 import BlurText from "./animation/BlurText";
+import StarBorder from "@/components/animation/StarBorder";
 
 export function Hero() {
   return (
@@ -116,7 +117,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4" // Stack vertically on mobile, horizontally on larger screens
           >
             {/* Primary CTA button - links to projects section */}
-            <Button asChild size="lg" className="rounded-full px-8">
+            <Button asChild size="lg" className="rounded-full px-8 border-2">
               <ScrollLink
                 to="projects"
                 spy={true}
@@ -128,20 +129,28 @@ export function Hero() {
               </ScrollLink>
             </Button>
             {/* Secondary CTA button - links to resume download */}
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8"
+            <StarBorder
+              as="div"
+              className=""
+              color="#676cd9"
+              speed="5s"
+              thickness={1}
             >
-              <Link
-                href="/assets/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="rounded-full px-8"
               >
-                Download Resume <Download className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+                <Link
+                  href="/assets/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download Resume <Download className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </StarBorder>
           </motion.div>
 
           {/* Profile image/avatar with spring animation */}

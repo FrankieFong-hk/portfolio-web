@@ -161,7 +161,7 @@ export function Projects() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1, // Creates a staggered effect for child elements
-        delay: 0.8
+        delay: 0.8,
       },
     },
   };
@@ -210,14 +210,14 @@ export function Projects() {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              transition={{ duration: 0.2}}
+              transition={{ duration: 0.2 }}
             >
               {/* Project card with hover effect and full height */}
               <Card className="overflow-hidden h-full border shadow-lg hover:shadow-xl transition-all flex flex-col">
                 {/* Project image container with 16:9 aspect ratio */}
                 <div className="aspect-video relative overflow-hidden bg-muted cursor-pointer group">
                   {/* Project image with click to zoom functionality */}
-                  <div 
+                  <div
                     onClick={() => openImageModal(project.image, project.title)}
                     className="relative w-full h-full"
                   >
@@ -229,7 +229,10 @@ export function Projects() {
                       className="object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors">
-                      <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={32} />
+                      <ZoomIn
+                        className="text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                        size={32}
+                      />
                     </div>
                   </div>
                 </div>
