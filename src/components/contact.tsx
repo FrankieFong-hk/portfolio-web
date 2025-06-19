@@ -16,7 +16,9 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
   Card,
   CardContent,
@@ -27,25 +29,120 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Loader2,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 export function Contact() {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  // Submission status state
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: false,
+    message: "",
+  });
+
+  // Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
   /**
-   * Form submission handler
+   * Form submission handler using EmailJS
    *
-   * This is a placeholder function that can be connected to a backend service.
-   * In a real implementation, you would typically:
-   * 1. Validate form data
-   * 2. Send data to an API endpoint (e.g., using fetch or axios)
-   * 3. Handle success/error responses
-   * 4. Show appropriate feedback to the user
+   * This function:
+   * 1. Validates form data (handled by HTML required attributes)
+   * 2. Sends data using EmailJS service
+   * 3. Handles success/error responses
+   * 4. Shows appropriate feedback to the user
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // This is where you would typically handle form submission
-    // For example, sending data to an API endpoint
-    console.log("Form submitted");
-    alert("Thank you for your message! This is a demo form.");
+
+    // Set submitting state
+    setStatus({
+      submitting: true,
+      submitted: false,
+      error: false,
+      message: "Sending your message...",
+    });
+
+    try {
+      // Replace these with your actual EmailJS service ID, template ID, and public key
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      // Send the email using EmailJS
+      const result = await emailjs.send(
+        serviceId ?? "",
+        templateId ?? "",
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      console.log("Email sent successfully:", result.text);
+
+      // Update status on success
+      setStatus({
+        submitting: false,
+        submitted: true,
+        error: false,
+        message: "Thank you! Your message has been sent successfully.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setStatus((prev) => ({ ...prev, submitted: false, message: "" }));
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+
+      // Update status on error
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: true,
+        message: "Failed to send your message. Please try again later.",
+      });
+
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setStatus((prev) => ({ ...prev, error: false, message: "" }));
+      }, 5000);
+    }
   };
 
   return (
@@ -101,6 +198,8 @@ export function Contact() {
                         id="name"
                         placeholder="Your name"
                         className="h-10 sm:h-11"
+                        value={formData.name}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -113,6 +212,8 @@ export function Contact() {
                         type="email"
                         placeholder="Your email"
                         className="h-10 sm:h-11"
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -125,6 +226,8 @@ export function Contact() {
                       id="subject"
                       placeholder="Subject"
                       className="h-10 sm:h-11"
+                      value={formData.subject}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -136,14 +239,44 @@ export function Contact() {
                       id="message"
                       placeholder="Your message"
                       className="min-h-[120px] sm:min-h-[150px] resize-y"
+                      value={formData.message}
+                      onChange={handleChange}
                       required
                     />
                   </div>
+                  {/* Status message display */}
+                  {status.message && (
+                    <div
+                      className={`flex items-center gap-2 p-3 rounded-md text-sm ${
+                        status.error
+                          ? "bg-red-100 text-red-700"
+                          : status.submitted
+                          ? "bg-green-100 text-green-700"
+                          : "bg-blue-100 text-blue-700"
+                      }`}
+                    >
+                      {status.submitting && (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      )}
+                      {status.submitted && <CheckCircle className="h-4 w-4" />}
+                      {status.error && <AlertCircle className="h-4 w-4" />}
+                      <span>{status.message}</span>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     className="w-full h-11 sm:h-12 text-base sm:text-lg mt-2"
+                    disabled={status.submitting}
                   >
-                    Send Message
+                    {status.submitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      "Send Message"
+                    )}
                   </Button>
                 </form>
               </CardContent>
