@@ -70,7 +70,7 @@ const StarBorder = <T extends React.ElementType = "button">({
           animation: `starMovementTop ${speed} linear infinite alternate`,
         }}
       ></div>
-      <div className="relative z-1 bg-gradient-to-b from-black to-gray-900 border border-gray-800 text-white text-center text-[16px] rounded-[20px]">
+      <div className="relative z-1 bg-gradient-to-w dark:bg-gradient-to-b  to-gray-900 border border-gray-300 dark:border-gray-800  text-black dark:text-white text-center text-[16px] rounded-[20px]">
         {children}
       </div>
     </Component>

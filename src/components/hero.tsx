@@ -116,18 +116,26 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }} // Delayed after headline
             className="flex flex-col sm:flex-row gap-4" // Stack vertically on mobile, horizontally on larger screens
           >
-            {/* Primary CTA button - links to projects section */}
-            <Button asChild size="lg" className="rounded-full px-8 border-2">
-              <ScrollLink
-                to="projects"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                View Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </ScrollLink>
-            </Button>
+            <StarBorder
+              as="div"
+              className=""
+              color="#676cd9"
+              speed="5s"
+              thickness={1}
+            >
+              {/* Primary CTA button - links to projects section */}
+              <Button asChild size="lg" className="rounded-full px-8">
+                <ScrollLink
+                  to="projects"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
+                </ScrollLink>
+              </Button>
+            </StarBorder>
             {/* Secondary CTA button - links to resume download */}
             <StarBorder
               as="div"
