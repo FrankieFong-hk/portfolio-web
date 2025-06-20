@@ -124,7 +124,7 @@ export function Hero() {
               thickness={1}
             >
               {/* Primary CTA button - links to projects section */}
-              <Button asChild size="lg" className="rounded-full px-8">
+              <Button asChild size="lg" className="rounded-full px-8 w-full">
                 <ScrollLink
                   to="projects"
                   spy={true}

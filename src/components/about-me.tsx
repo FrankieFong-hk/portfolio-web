@@ -74,7 +74,7 @@ export function AboutMe() {
             viewport={{ once: true }}
           >
             {/* Bio section */}
-            <SpotlightCard spotlightColor="rgba(103, 108, 217, 0.25)">
+            <SpotlightCard spotlightColor="rgba(103, 108, 217, 0.5)">
               <CardContent className="pt-6">
                 <div className="space-y-4 text-muted-foreground">
                   <p>
